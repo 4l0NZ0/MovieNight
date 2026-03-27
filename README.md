@@ -1,3 +1,9 @@
+# MovieNight
+
+Use AI to choose a movie depending on your mood or movie genre taste.
+
+> > > > > > > 2cae11d (Setup folder structure. Based on DDD.)
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
