@@ -2,8 +2,8 @@
 export interface Movie {
   id: number;
   title: string;
-  rating: number;
+  vote_average: number;
   overview: string;
-  genres: string;
+  genres: [number];
   posterPath: string;
 }
