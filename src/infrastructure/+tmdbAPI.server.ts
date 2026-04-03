@@ -1,14 +1,15 @@
 // Calls TMDB API
 import type { Movie } from "../domian/movie";
+import { TMDB_TOKEN } from "$env/static/private";
 
 const TMDB_BASE = "https://api.themoviedb.org/3";
 
 //make request
-export async function getPopularMovies(token: string): Promise<Movie[]> {
+export async function getPopularMovies(): Promise<Movie[]> {
   const res = await fetch(`${TMDB_BASE}/movie/popular`, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${TMDB_TOKEN}`,
       "Content-Type": "application/json",
     },
   });
@@ -21,7 +22,6 @@ export async function getPopularMovies(token: string): Promise<Movie[]> {
   }
 
   const data = await res.json();
-  console.log(data);
 
   const movie: Movie[] = data.results.map(
     (item: {
@@ -31,6 +31,7 @@ export async function getPopularMovies(token: string): Promise<Movie[]> {
       overview: string;
       genre_ids: [number];
       poster_path: string;
+      backdrop_path: string;
     }) => {
       return {
         id: item.id,
@@ -39,6 +40,7 @@ export async function getPopularMovies(token: string): Promise<Movie[]> {
         overview: item.overview,
         genres: item.genre_ids,
         posterPath: item.poster_path,
+        backdrop_path: item.backdrop_path,
       };
     },
   );

@@ -6,4 +6,5 @@ export interface Movie {
   overview: string;
   genres: [number];
   posterPath: string;
+  backdrop_path: string;
 }
